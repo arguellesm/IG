@@ -1,2 +1,2 @@
 # IG
-Prácticas IG 20/21
+Prácticas IG del Grado en Informática de la UGR (Curso 20/21)
