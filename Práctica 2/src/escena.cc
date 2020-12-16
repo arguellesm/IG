@@ -10,6 +10,7 @@ using namespace std;
 
 Escena::Escena()
 {
+    cout << "sadasd";
     Front_plane       = 50.0;
     Back_plane        = 2000.0;
     Observer_distance = 4*Front_plane;
