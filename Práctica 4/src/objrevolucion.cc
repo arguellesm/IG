@@ -24,6 +24,8 @@ ObjRevolucion::ObjRevolucion(const std::string & archivo, int num_instancias, bo
 	crearMalla(perfil, num_instancias, tapa_sup&&tapa_inf, eje_r);
 	// Inicializar tablas de colores
 	inicializaColores();
+	// Calcular las normales
+    calcular_normales();
 }
 
 // objeto de revolución obtenido a partir de un perfil (en un vector de puntos)
@@ -33,6 +35,8 @@ ObjRevolucion::ObjRevolucion(std::vector<Tupla3f> archivo, int num_instancias, b
 	crearMalla(archivo, num_instancias, tapa_sup&&tapa_inf, eje_r);
 	// Inicializar tablas de colores
 	inicializaColores();
+	// Calcular las normales
+    calcular_normales();
 }
 
 
