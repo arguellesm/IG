@@ -94,7 +94,7 @@ void funcion_idle()
 {
   if(escena->getAnimacionAutomatica()==true){
 	  if (escena!=0)
-	    escena->animarModeloJerarquico();
+	    escena->animarEscena();
 	  glutPostRedisplay();
   }
 }

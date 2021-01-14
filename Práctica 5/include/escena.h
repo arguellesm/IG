@@ -16,7 +16,7 @@
 
 typedef enum {NADA, SELOBJETO, SELVISUALIZACION, SELILUMINACION, SELALPHA, SELBETA, SELDIBUJADO, SELMANUAL, SELVELOCIDAD} menu;
 typedef enum {NINGUNO, CUBO, ARBOL, ESFERA} objetoVisible;
-typedef enum {CORONA, TALLO, HOJA, FLOR, SOL, GENERAL} animacion;
+typedef enum {CORONA, PETALOS, TALLO, HOJA, FLOR, SOL, GENERAL} animacion;
 
 class Escena
 {
@@ -73,10 +73,11 @@ private:
     // True cuando la luz indicada está activa
     bool ldirAct=1, lposAct=1;
     // Parámetros para la animación automática
-    float animacionTallo  = 0.3;
-    float animacionCorona = 1;
-    float animacionHoja   = 1;
-    float animacionSol    = 0.8;
+    float animacionTallo   = 0.3;
+    float animacionPetalos = 1;
+    float animacionCorona  = 1;
+    float animacionHoja    = 1;
+    float animacionSol     = 0.8;
 
 public:
 
@@ -93,7 +94,8 @@ public:
 
     // Animación automática
     bool animacionAutomatica = true;
-    void animarModeloJerarquico();
+    void animarEscena();
+    void animarFlor(Flor* flor);
 
     bool inline getAnimacionAutomatica(){return animacionAutomatica;}
 };

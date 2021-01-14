@@ -30,47 +30,47 @@ void Flor::draw(int modo, bool ajedrez){
 			glPopMatrix();
 
 			glPushMatrix();
+				glTranslatef(0,40,0);
+				eje->draw(modo, ajedrez);
+			glPopMatrix();
+
+			// Cabeza de la flor
+			glPushMatrix();
+				// Giro completo
+				glRotatef(ang_petalos,0,1,0);
+
+				// Pistilo
 				glPushMatrix();
 					glTranslatef(0,40,0);
-					eje->draw(modo, ajedrez);
+					glScalef(1.0,0.4,1.0);
+					pistilo->draw(modo, ajedrez);
 				glPopMatrix();
 
+				// Pétalos
 				glPushMatrix();
-					// Pistilo
-					glPushMatrix();
-						glTranslatef(0,40,0);
-						glScalef(1.0,0.4,1.0);
-						pistilo->draw(modo, ajedrez);
-					glPopMatrix();
-
-					// Pétalos
-					rad = ang_petalos * (M_PI/180);
-					a	= cos(rad) * 5;
-					b 	= sin(rad) * 5;
-
-					glPushMatrix();
-						glTranslatef(a,40,-b);
-						glScalef(1.0,0.4,1.0);
-						petalos.at(0)->draw(modo, ajedrez);
-					glPopMatrix();
-					glPushMatrix();
-						glTranslatef(b,40,a);
-						glScalef(1.0,0.4,1.0);
-						petalos.at(1)->draw(modo, ajedrez);
-					glPopMatrix();
-					glPushMatrix();
-						glTranslatef(-a,40,b);
-						glScalef(1.0,0.4,1.0);
-						petalos.at(2)->draw(modo, ajedrez);
-					glPopMatrix();
-					glPushMatrix();
-						glTranslatef(-b,40,-a);
-						glScalef(1.0,0.4,1.0);
-						petalos.at(3)->draw(modo, ajedrez);
-					glPopMatrix();
-
+					glTranslatef(0,40,-5);
+					glRotatef(apertura,1,0,0);
+					glScalef(1.0,0.4,1.0);
+					petalos.at(0)->draw(modo, ajedrez);
 				glPopMatrix();
-
+				glPushMatrix();
+					glTranslatef(5,40,0);
+					glRotatef(apertura,0,0,1);
+					glScalef(1.0,0.4,1.0);
+					petalos.at(1)->draw(modo, ajedrez);
+				glPopMatrix();
+				glPushMatrix();
+					glTranslatef(0,40,5);
+					glRotatef(-apertura,1,0,0);
+					glScalef(1.0,0.4,1.0);
+					petalos.at(2)->draw(modo, ajedrez);
+				glPopMatrix();
+				glPushMatrix();
+					glTranslatef(-5,40,0);
+					glRotatef(-apertura,0,0,1);
+					glScalef(1.0,0.4,1.0);
+					petalos.at(3)->draw(modo, ajedrez);
+				glPopMatrix();
 			glPopMatrix();
 
 			// Hoja
@@ -114,8 +114,16 @@ void Flor::setAltura(float valor){
 	crecimiento += creciendo ? valor : -valor;
 }
 
+void Flor::setApertura(float valor){
+	if(apertura+valor >= 110 || apertura+valor <= 0)
+		abriendose = false;
+	if(apertura-valor <= 0  || apertura-valor >= 110)
+		abriendose = true;
 
-void Flor::setAngPetalos(float valor){
+	apertura += abriendose ? valor : -valor;
+}
+
+void Flor::setGiro(float valor){
 	ang_petalos += valor;
 }
 

@@ -47,7 +47,7 @@ Escena::Escena()
     Material amarillo = Material({ 0.24725f, 0.1995f, 0.0745f, 1.0f },{0.75164f, 0.60648f, 0.22648f, 1.0f },{0.628281f, 0.555802f, 0.366065f, 1.0f },51.2f);
     Material blanco   = Material({0.650f,0.600f,0.600f,1.0f},{0.000f,0.000f,0.000f,1.0f},{0.650f,0.600f,0.600f,1.0f},90.00f);
     Material kombu    = Material({0.156862,0.211764,0.094117,1.0f},{0.156862,0.211764,0.094117,1.0f},{0.156862,0.211764,0.094117,1.0f},12.3f);
-    Material azul    = Material({0.435f,0.690f,0.674f,1.0f},{0.435f,0.690f,0.674f,1.0f},{0.435f,0.690f,0.674f,1.0f}, 0.00f);
+    Material azul     = Material({0.435f,0.690f,0.674f,1.0f},{0.435f,0.690f,0.674f,1.0f},{0.435f,0.690f,0.674f,1.0f}, 0.00f);
 
     // Asignar materiales a los objetos de la escena
     arbol1->setMaterial(marron);
@@ -284,13 +284,13 @@ bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
             if(animacionAutomatica){
                 modoMenu=SELVELOCIDAD;
                 printf("\n> ¿De qué quieres cambiar la velocidad?:\n");
-                printf("\n   1: Corona\n   2: Tallo\n   3: Hoja\n   4: De toda la flor\n   5: Sol\n   6: De toda la escena\n");
+                printf("\n   1: Corona\n   2: Pétalos\n   3: Tallo\n   4: Hoja\n   5: De toda la flor\n   6: Sol\n   7: De toda la escena\n");
             }
         break;
         case 'M':    // Modo de animación manual
          	modoMenu=SELMANUAL;
-            //animacionAutomatica = false;
-            printf("\n> ¿Qué quieres mover?:\n   1: Corona de la flor\n   2: Tallo\n   3: Hoja\n   Q: Salir\n");
+            animacionAutomatica = false;
+            printf("\n> ¿Qué quieres mover?:\n   1: Corona de la flor\n   2: Pétalos\n   3: Tallo\n   4: Hoja\n   Q: Salir\n");
         break;
     }
 
@@ -425,33 +425,42 @@ bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
                 cout << "   +: Giro horario\n   -: Giro antihorario" << endl;
                 animacionActiva = CORONA;
             break;
-            case '2':   // Subir o bajar el tallo
+            case '2':   // Apertura de los pétalos
+                cout << "Has seleccionado el movimiento de los pétalos. ¿Qué quieres hacer?" << endl;
+                cout << "   +: Abrir\n   -: Cerrar" << endl;
+                animacionActiva = PETALOS;
+            break;
+            case '3':   // Subir o bajar el tallo
                 cout << "Has seleccionado el movimiento del tallo. ¿Qué quieres hacer?" << endl;
                 cout << "   +: Subir\n   -: Bajar" << endl;
                 animacionActiva = TALLO;
             break;
-            case '3':   // Giro de la hoja
+            case '4':   // Giro de la hoja
                 cout << "Has seleccionado el movimiento de la hoja. ¿Qué quieres hacer?" << endl;
                 cout << "   +: Subir\n   -: Bajar" << endl;
                 animacionActiva = HOJA;
             break;
             case '+':
                 switch (animacionActiva) {
-                    case CORONA: flor1->setAngPetalos(5);
+                    case CORONA: flor1->setGiro(5); flor2->setGiro(5); flor3->setGiro(5);
                     break;
-                    case TALLO: flor1->setAltura(0.3);
+                    case PETALOS: flor1->setApertura(5); flor2->setApertura(5); flor3->setApertura(5);
                     break;
-                    case HOJA: flor1->setAngHoja(1);
+                    case TALLO: flor1->setAltura(0.3); flor2->setAltura(0.3); flor3->setAltura(0.3);
+                    break;
+                    case HOJA: flor1->setAngHoja(1); flor2->setAngHoja(1); flor3->setAngHoja(1);
                     break;
                 }
             break;
             case '-':
                 switch (animacionActiva) {
-                    case CORONA: flor1->setAngPetalos(-5);
+                    case CORONA: flor1->setGiro(-5); flor2->setGiro(-5); flor3->setGiro(-5);
                     break;
-                    case TALLO: flor1->setAltura(-0.3);
+                    case PETALOS: flor1->setApertura(-5); flor2->setApertura(-5); flor3->setApertura(-5);
                     break;
-                    case HOJA: flor1->setAngHoja(-1);
+                    case TALLO: flor1->setAltura(-0.3); flor2->setAltura(-0.3); flor3->setAltura(-0.3);
+                    break;
+                    case HOJA: flor1->setAngHoja(-1); flor2->setAngHoja(-1); flor3->setAngHoja(-1);
                     break;
                 }
             break;
@@ -466,23 +475,27 @@ bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
                 cout << "   +: Aumentar velocidad de la corona\n   -: Disminuir velocidad de la corona" << endl;
                 animacionActiva = CORONA;
             break;
-            case '2':   // Velocidad del tallo
+            case '2':   // Velocidad de la apertura de los pétalos
+                cout << "   +: Aumentar velocidad de apertura\n   -: Disminuir velocidad de apertura" << endl;
+                animacionActiva = PETALOS;
+            break;
+            case '3':   // Velocidad del tallo
                 cout << "   +: Aumentar velocidad del tallo\n   -: Disminuir velocidad del tallo" << endl;
                 animacionActiva = TALLO;
             break;
-            case '3':   // Velocidad de la hoja
+            case '4':   // Velocidad de la hoja
                 cout << "   +: Aumentar velocidad de la hoja\n   -: Disminuir velocidad de la hoja" << endl;
                 animacionActiva = HOJA;
             break;
-            case '4':   // Velocidad de la flor
+            case '5':   // Velocidad de la flor
                 cout << "   +: Aumentar velocidad de la flor\n   -: Disminuir velocidad de la flor" << endl;
                 animacionActiva = FLOR;
             break;
-            case '5':   // Velocidad del sol
+            case '6':   // Velocidad del sol
                 cout << "   +: Aumentar velocidad del sol\n   -: Disminuir velocidad del sol" << endl;
                 animacionActiva = SOL;
             break;
-            case '6':   // Velocidad general
+            case '7':   // Velocidad general
                 cout << "   +: Aumentar velocidad en general\n   -: Disminuir velocidad en general" << endl;
                 animacionActiva = GENERAL;
             break;
@@ -490,12 +503,15 @@ bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
                 switch (animacionActiva) {
                     case CORONA: animacionCorona *= 1.20;
                     break;
+                    case PETALOS: animacionPetalos *=1.20;
+                    break;
                     case TALLO: animacionTallo *= 1.20;
                     break;
                     case HOJA: animacionHoja *= 1.20;
                     break;
                     case FLOR:
                         animacionCorona *= 1.20;
+                        animacionPetalos *=1.20;
                         animacionTallo *= 1.20;
                         animacionHoja *= 1.20;
                     break;
@@ -503,6 +519,7 @@ bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
                     break;
                     case GENERAL:
                         animacionCorona *= 1.20;
+                        animacionPetalos *=1.20;
                         animacionTallo *= 1.20;
                         animacionHoja *= 1.20;
                         animacionSol += 0.20;
@@ -513,12 +530,15 @@ bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
                 switch (animacionActiva) {
                     case CORONA: animacionCorona *= 0.80;
                     break;
+                    case PETALOS: animacionPetalos *=0.80;
+                    break;
                     case TALLO: animacionTallo *= 0.80;
                     break;
                     case HOJA: animacionHoja *= 0.80;
                     break;
                     case FLOR:
                         animacionCorona *= 0.80;
+                        animacionPetalos *=0.80;
                         animacionTallo *= 0.80;
                         animacionHoja *= 0.80;
                     break;
@@ -526,6 +546,7 @@ bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
                     break;
                     case GENERAL:
                         animacionCorona *= 0.80;
+                        animacionPetalos *=0.80;
                         animacionTallo *= 0.80;
                         animacionHoja *= 0.80;
                         animacionSol -= 0.20;
@@ -605,24 +626,24 @@ void Escena::change_observer()
 }
 
 //--------------------------------------------------------------------------
-// Funcion para la animación automática del modelo jerárquico
+// Funcion para la animación automática del modelo jerárquico y el Sol
 //--------------------------------------------------------------------------*
 
-void Escena::animarModeloJerarquico()
+void Escena::animarEscena()
 {
     // Animar flores (Modelo jerárquico)
-    flor1->setAltura(animacionTallo);
-    flor1->setAngPetalos(animacionCorona);
-    flor1->setAngHoja(animacionHoja);
-
-    flor2->setAltura(animacionTallo);
-    flor2->setAngPetalos(animacionCorona);
-    flor2->setAngHoja(animacionHoja);
-
-    flor3->setAltura(animacionTallo);
-    flor3->setAngPetalos(animacionCorona);
-    flor3->setAngHoja(animacionHoja);
+    animarFlor(flor1);
+    animarFlor(flor2);
+    animarFlor(flor3);
 
     // Animar luz poscional
     sol->setPosicion(animacionSol);
+}
+
+void Escena::animarFlor(Flor* flor)
+{
+    flor->setAltura(animacionTallo);
+    flor->setApertura(animacionPetalos);
+    flor->setGiro(animacionCorona);
+    flor->setAngHoja(animacionHoja);
 }

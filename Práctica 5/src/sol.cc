@@ -6,7 +6,7 @@ using namespace std;
 // -----------------------------------------------------------------------------
 
 Sol::Sol(){
-    sol  = new Esfera(100, 50, 30.0);
+    sol  = new Esfera(100, 50, 30.0,"./textures/sign.jpg");
     lpos = new LuzPosicional (GL_LIGHT2,{0.0,150.0,0.0},{0.70f,0.70f,0.70f,1.0f},{0.70f,0.70f,0.70f,1.0f},{0.70f,0.70f,0.70f,1.0f});
 }
 

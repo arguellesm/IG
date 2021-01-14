@@ -19,8 +19,9 @@ public:
 	void draw(int modo, bool ajedrez);
 	void setMaterial(const Material& mat_tal, const Material& mat_pis, const Material& mat_pet, const Material& mat_hoj, const Material& mat_mac);
 	void setAltura(float valor);
-	void setAngPetalos(float valor);
+	void setGiro(float valor);
 	void setAngHoja(float valor);
+	void setApertura(float valor);
 
 private:
 	// Elementos del modelo
@@ -34,8 +35,10 @@ private:
 	// Valores de los grados de libertad
 	bool creciendo    = true;
 	bool subiendo     = true;
+	bool abriendose   = true;
 	float crecimiento = 0;
 	float ang_petalos = 0;
+	float apertura    = 0;
 	float ang_hoja    = 0;
 	float rad, a, b;
 };

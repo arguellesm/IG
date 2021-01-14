@@ -19,7 +19,7 @@ private:
 	float radio;
 
 public:
-	Esfera(const int nv, const int num_instancias, const float radio);
+	Esfera(const int nv, const int num_instancias, const float radio, std::string textura="");
 };
 
 #endif
