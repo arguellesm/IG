@@ -17,6 +17,6 @@ Luces y materiales.
 
 
 #### Prácticas 4 y 5
-Modelo jerárquico (flores) y texturas.
+Modelo jerárquico (flores), texturas y animación.
 
 ![Práctica 5](https://github.com/arguellesm/IG/blob/main/P5.png)
