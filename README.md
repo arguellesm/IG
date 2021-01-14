@@ -14,3 +14,9 @@ Objetos.
 Luces y materiales.
 
 ![Práctica 2](https://github.com/arguellesm/IG/blob/main/P3.png)
+
+
+#### Prácticas 4 y 5
+Modelo jerárquico (flores) y texturas.
+
+![Práctica 5](https://github.com/arguellesm/IG/blob/main/P5.png)
