@@ -13,7 +13,6 @@
 #include "cuadro.h"
 #include "sol.h"
 #include "camara.h"
-#include "textura.h"
 
 typedef enum {NADA, SELOBJETO, SELVISUALIZACION, SELILUMINACION, SELALPHA, SELBETA, SELDIBUJADO, SELMANUAL, SELVELOCIDAD, SELCAMARA} menu;
 typedef enum {NINGUNO, CUBO, ARBOL, ESFERA} objetoVisible;
@@ -33,14 +32,14 @@ private:
     void clear_window();
 
     // Objetos para los menús
-    menu modoMenu=NADA;
+    menu modoMenu=NADA;                     // indica el submenú
     objetoVisible objetoActivo;             // indica el objeto a dibujar
     int modoDibujado = 1;                   // indica el modo de dibujado
     GLenum modoVisualizacion = GL_FILL;     // modo puntos/linea/solido
     bool ajedrezActivado     = false;       // modo ajedrez
     bool tapasActivadas      = true;        // mostrar u ocultar tapas en ObjRevolucion
     animacion animacionActiva;              // indica la parte del MJ a animar
-    objetoSelec objetoSeleccionado = NULO;
+    objetoSelec objetoSeleccionado = NULO;  // indica el objeto seleccionado
 
     // Objetos de la escena
     Ejes ejes;
@@ -68,7 +67,7 @@ private:
     Material amarillo = Material({ 0.24725f, 0.1995f, 0.0745f, 1.0f },{0.75164f, 0.60648f, 0.22648f, 1.0f },{0.628281f, 0.555802f, 0.366065f, 1.0f },51.2f);
     Material blanco   = Material({0.650f,0.600f,0.600f,1.0f},{0.000f,0.000f,0.000f,1.0f},{0.650f,0.600f,0.600f,1.0f},90.00f);
     Material kombu    = Material({0.156862,0.211764,0.094117,1.0f},{0.156862,0.211764,0.094117,1.0f},{0.156862,0.211764,0.094117,1.0f},12.3f);
-    Material azul     = Material({0.435f,0.690f,0.674f,1.0f},{0.435f,0.690f,0.674f,1.0f},{0.435f,0.690f,0.674f,1.0f}, 0.00f);
+    Material azul     = Material({0.435f,0.690f,0.674f,1.0f},{0.435f,0.690f,0.674f,1.0f},{0.435f,0.690f,0.674f,1.0f},0.00f);
 
     // Luces
     LuzDireccional * ldir      = nullptr;

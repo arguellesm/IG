@@ -33,12 +33,6 @@ public:
     void zoom(float factor);
     void setObserver();
     void setProyeccion();
-
-    // Gets
-    inline float getLeft(){return left;}
-    inline float getRight(){return right;}
-    inline float getTop(){return top;}
-    inline float getBottom(){return bottom;}
 };
 
 #endif

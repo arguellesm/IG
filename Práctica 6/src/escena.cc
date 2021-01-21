@@ -38,8 +38,8 @@ Escena::Escena()
 
     // Cámaras
     Camara cam1 = Camara({0.0,300.0,1000.0}, {0.0,100.0,0.0}, {0.0,1.0,0.0}, true, -500, 500, 400, -400, Front_plane*4, Back_plane);
-    Camara cam2 = Camara({0.0,900.0,300.0}, {0.0,50.0,0.0}, {0.0,50.0,0.0}, false, -300, 300, 400, -400, Front_plane*4, Back_plane);
-    Camara cam3 = Camara({600.0,300.0,0.0}, {0.0,50.0,0.0}, {0.0,50.0,0.0}, false, -300, 300, 400, -400, Front_plane*4, Back_plane);
+    Camara cam2 = Camara({1.0,550.0,1.0}, {0.0,50.0,0.0}, {0.0,1.0,0.0}, false, -300, 300, 400, -400, Front_plane*4, Back_plane);
+    Camara cam3 = Camara({1500.0,1500.0,-1500.0}, {0.0,0.0,0.0}, {0.0,1.0,0.0}, true, -500, 500, 400, -400, Front_plane*4, Back_plane*2);
     camaras.push_back(cam1);
     camaras.push_back(cam2);
     camaras.push_back(cam3);
@@ -70,7 +70,6 @@ Escena::Escena()
 
 void Escena::inicializar( int UI_window_width, int UI_window_height )
 {
-    //glClearColor( 252/255.0, 237.5/255.0, 227.5/255.0, 0.0 );   // color para limpiar la pantalla
     glClearColor( 202/255.0, 227.5/255.0, 247.5/255.0, 0.0 );   // color para limpiar la pantalla
 
 	glEnable(GL_DEPTH_TEST);       // se habilita el z-bufer
@@ -357,7 +356,6 @@ bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
                 cout << "Tapas " << ( tapasActivadas ? "desactivadas" : "activadas" ) << endl;
                 // Actualizar variable de la escena
                 tapasActivadas = !tapasActivadas;
-                // Actualizar atributo en los objetos
             break;
         }
     }
@@ -750,9 +748,9 @@ void Escena::dibujaSeleccion()
 
 void Escena::analizarPixel(int x, int y)
 {
-    GLfloat p[2];                                                   // pixel leído
-    GLint viewport[4];                                              // para width (3)
-    glGetIntegerv(GL_VIEWPORT,viewport);                            // guarda viewport
+    GLfloat p[2];                                         // pixel leído
+    GLint viewport[4];                                    // para width (3)
+    glGetIntegerv(GL_VIEWPORT,viewport);                  // guarda viewport
     glReadPixels(x,viewport[3]-y,1,1,GL_RGB,GL_FLOAT,p);
 
     // Suelo

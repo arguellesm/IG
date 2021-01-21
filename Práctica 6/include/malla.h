@@ -69,7 +69,6 @@ class Malla3D
    // Asignar color
    void setColor(const Tupla3f& color);
 
-
    // Análogas a glDrawElements, permite visualizar o no las tapas en ObjRevolucion
    virtual void dibujarElementos();
    virtual void dibujarElementosDif();
