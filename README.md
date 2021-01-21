@@ -1,6 +1,6 @@
 ## Prácticas IG 20/21
 
-Prácticas de la asignatura Informática Gráfica (UGR). 
+Prácticas de la asignatura Informática Gráfica (UGR). Úsalas para lo que las necesites :sunflower:.
 
 #### Uso
 Para ejecutarlas es necesario tener instalado `libglew`, `freeglut`, `libjpeg`, `g++`, `make` y los drivers de la tarjeta gráfica. 
