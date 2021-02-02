@@ -29,7 +29,7 @@ Cámaras, perspectiva ortogonal y selección de objetos.
 Desglose de la nota final indicando los apartados que no hice:
 Ítem | Nota obtenida | Puntuación máxima
 ------------ | ------------- | -------------
-Visualización simultánea puntos + lineas + sólido (cualquier combinación de ellos) | 0.0 | 0.050
+Visualización simultánea puntos + lineas + sólido | 0.0 | 0.050
 Hay en la escena un cilindro texturizado o una esfera texturizada | 0.0 | 0.150
 Resto de ítems | 5.30 | 5.30
 **Nota final** | **5.3** | 5.5
