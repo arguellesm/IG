@@ -38,6 +38,7 @@ ld_libs_linux   := -lGLEW -lGLU -lglut -lGL
 ld_libs_macos   := -framework OpenGL -framework GLUT $(glu_flag_macos)
 ld_libs         := $(ld_libs_common) $(if $(en_linux), $(ld_libs_linux), $(ld_libs_macos))
 
+_dummy          := $(shell mkdir -p obj bin)
 
 x: $(exe)
 	-mkdir $(OBJ)
@@ -59,3 +60,4 @@ $(units_cc) : $(headers)
 
 clean:
 	-rm -f $(OBJ)/*.o $(BIN)/*_exe
+	rmdir obj bin
